@@ -1,0 +1,21 @@
+[CACHESIMPLE|Aldec.SymbolsCommands.7]
+Built-in symbols=0
+digital_control_block=0
+[COMPILESTATUS|.\src\state_machine.v]
+FileTimeLow=195382820
+FileTimeHigh=31287018
+Status=Modified
+[General]
+CurrentVersion=103
+[CACHEDOC|Aldec.Project.Generic.7|.\digital_control_block\digital_control_block.adf|]
+Path=
+[Gui config]
+RunFor=100 ns
+[OPENDOC|Aldec.Hde.HdePlugIn.7|.\digital_control_block\src\state_machine.v|]
+CurrentLine=4
+CurrentColumn=7
+Bookmarks=-1
+BookmarksLength=3
+ZoomFactor=0
+Frame=0
+WindowWorkspaceInfo="LAAAAAAAAAABAAAA/////////////////////zcBAACZAAAAfwcAAMYCAAAAAAAAAAAAAAUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADIAAAAyAAAAAAAAAAAAAAAyAAAAMgAAAAAAAAAAAAAAAAAAAAAAAAACQAAAAEAAAAAAAAAAAAAAA=="
