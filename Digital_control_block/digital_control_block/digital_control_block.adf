@@ -17,9 +17,16 @@ REFRESH_FLOW=1
 FLOWTOOLS=NONE
 FAMILY=
 [Files]
-/state_machine.v=-1
+/pacemaker_fsm.v=-1
+/fsm_next_state.v=-1
+/dff_pc.v=-1
+/tb_pacemaker_fsm.v=-1
 [Files.Data]
 .\src\state_machine.v=Verilog Source Code
+.\src\pacemaker_fsm.v=Verilog Source Code
+.\src\fsm_next_state.v=Verilog Source Code
+.\src\dff_pc.v=Verilog Source Code
+.\src\tb_pacemaker_fsm.v=Verilog Source Code
 [HierarchyViewer]
 HierarchyInformation=
 ShowHide=ShowTopLevel
