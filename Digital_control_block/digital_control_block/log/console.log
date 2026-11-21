@@ -1,0 +1,920 @@
+alog -O2 -sve -msg 5 -sv2k23 -work digital_control_block $dsn/src/state_machine.v $dsn/src/pacemaker_fsm.v $dsn/src/fsm_next_state.v $dsn/src/dff_pc.v $dsn/src/tb_pacemaker_fsm.v
+# Unit top modules: tb_pacemaker_fsm.
+# Compile success 0 Errors 0 Warnings  Analysis time: 1[s].
+# done
+# ELBREAD: Elaboration process.
+# ELBREAD: Elaboration time 0.0 [s].
+# ELBREAD: Elaboration process.
+# ELBREAD: Elaboration time 0.0 [s].
+asim -O5 +access +r +m+tb_pacemaker_fsm tb_pacemaker_fsm
+# ELBREAD: Elaboration process.
+# ELBREAD: Elaboration time 0.0 [s].
+# VSIM: Stack memory: 32MB
+# VSIM: Retval memory: 32MB
+# 
+# KERNEL: Main thread initiated.
+# KERNEL: Kernel process initialization phase.
+# ELAB2: Elaboration final pass...
+# ELAB2: Create instances ...
+# KERNEL: Time resolution set to 1ps.
+# ELAB2: Create instances complete.
+# SLP: Started
+# SLP: Elaboration phase ...
+# SLP: Elaboration phase ... done : 0.3 [s]
+# SLP: Generation phase ...
+# SLP: Generation phase ... done : 0.7 [s]
+# SLP: Finished : 1.0 [s]
+# SLP: 26 (76.47%) primitives and 8 (23.53%) other processes in SLP
+# SLP: 99 (100.00%) signals in SLP and 0 interface signals
+# ELAB2: Elaboration final pass complete - time: 1.1 [s].
+# KERNEL: SLP loading done - time: 0.1 [s].
+# KERNEL: Warning: You are using the Active-HDL Student Edition. The performance of simulation is running at a reduced rate.
+# KERNEL: Warning: Contact Aldec for available upgrade options - sales@aldec.com.
+# KERNEL: SLP simulation initialization done - time: 0.0 [s].
+# KERNEL: Kernel process initialization done.
+# Allocation: Simulator allocated 4635 kB (elbread=427 elab2=4137 kernel=70 sdf=0)
+# KERNEL: ASDB file was created in location C:\Pacemaker-project\Digital_control_block\digital_control_block\src\wave.asdb
+#  3:25 PM, 18 November, 2026
+#  Simulation has been initialized
+run
+# KERNEL: ==== Pacemaker FSM testbench ====
+# KERNEL: 
+# KERNEL: --- Part 1: next-state logic, all 16 rows ---
+# KERNEL:   A B H T | DA DB | expected
+# KERNEL:   0 0 0 0 |  0  0 |   0  0  
+# KERNEL:   0 0 0 1 |  1  0 |   1  0  
+# KERNEL:   0 0 1 0 |  0  1 |   0  1  
+# KERNEL:   0 0 1 1 |  0  1 |   0  1  
+# KERNEL:   0 1 0 0 |  0  0 |   0  0  
+# KERNEL:   0 1 0 1 |  0  0 |   0  0  
+# KERNEL:   0 1 1 0 |  0  1 |   0  1  
+# KERNEL:   0 1 1 1 |  0  1 |   0  1  
+# KERNEL:   1 0 0 0 |  0  1 |   0  1  
+# KERNEL:   1 0 0 1 |  0  1 |   0  1  
+# KERNEL:   1 0 1 0 |  0  1 |   0  1  
+# KERNEL:   1 0 1 1 |  0  1 |   0  1  
+# KERNEL:   1 1 0 0 |  0  0 |   0  0  
+# KERNEL:   1 1 0 1 |  0  0 |   0  0  
+# KERNEL:   1 1 1 0 |  0  0 |   0  0  
+# KERNEL:   1 1 1 1 |  0  0 |   0  0  
+# KERNEL: 
+# KERNEL: --- Part 2: directed scenarios ---
+# KERNEL:   ok   reset -> IDLE
+# KERNEL:   ok   idle, H=0 T=0 -> IDLE
+# KERNEL:   ok   idle, H=1 -> RESTART
+# KERNEL:   ok   restart, H held 1 -> RESTART
+# KERNEL:   ok   restart, H=0 -> IDLE
+# KERNEL:   ok   idle, T=1 -> PACE
+# KERNEL:   ok   pace -> restart -> RESTART
+# KERNEL:   ok   restart, H=0 T=1 (T ignored) -> IDLE
+# KERNEL:   ok   idle, H=1 T=1 -> RESTART
+# KERNEL:   ok   restart -> idle -> IDLE
+# KERNEL:   ok   idle, T=1 -> PACE
+# KERNEL:   ok   pace, H=1 -> RESTART
+# KERNEL:   ok   restart -> idle -> IDLE
+# KERNEL:   ok   idle, H=1 -> RESTART
+# KERNEL:   ok   async reset mid-cycle -> IDLE immediately
+# KERNEL: 
+# KERNEL: --- Part 3: 2000 random cycles vs reference model ---
+# KERNEL:   ok   no mismatches
+# KERNEL: 
+# KERNEL: --- Part 4: with timer model ---
+# KERNEL:   ok   60 bpm: no pacing
+# KERNEL: ERROR  t=10484375000000 cycle=5368: expected IDLE (P=0 R=0), got P=1 R=0  (H=0 T=1)
+# KERNEL: ERROR  t=10486328125000 cycle=5369: expected PACE (P=1 R=0), got P=0 R=1  (H=0 T=1)
+# KERNEL: ERROR  t=10488281250000 cycle=5370: expected RESTART (P=0 R=1), got P=0 R=0  (H=0 T=0)
+# KERNEL: ERROR  t=11988281250000 cycle=6138: expected IDLE (P=0 R=0), got P=1 R=0  (H=0 T=1)
+# KERNEL: ERROR  t=11990234375000 cycle=6139: expected PACE (P=1 R=0), got P=0 R=1  (H=0 T=1)
+# KERNEL: ERROR  t=11992187500000 cycle=6140: expected RESTART (P=0 R=1), got P=0 R=0  (H=0 T=0)
+# KERNEL: ERROR  t=13492187500000 cycle=6908: expected IDLE (P=0 R=0), got P=1 R=0  (H=0 T=1)
+# KERNEL: ERROR  t=13494140625000 cycle=6909: expected PACE (P=1 R=0), got P=0 R=1  (H=0 T=1)
+# KERNEL: ERROR  t=13496093750000 cycle=6910: expected RESTART (P=0 R=1), got P=0 R=0  (H=0 T=0)
+# KERNEL: ERROR  t=14996093750000 cycle=7678: expected IDLE (P=0 R=0), got P=1 R=0  (H=0 T=1)
+# KERNEL: ERROR  t=14998046875000 cycle=7679: expected PACE (P=1 R=0), got P=0 R=1  (H=0 T=1)
+# KERNEL: ERROR  t=15000000000000 cycle=7680: expected RESTART (P=0 R=1), got P=0 R=0  (H=0 T=0)
+# KERNEL: ERROR  t=16500000000000 cycle=8448: expected IDLE (P=0 R=0), got P=1 R=0  (H=0 T=1)
+# KERNEL: ERROR  t=16501953125000 cycle=8449: expected PACE (P=1 R=0), got P=0 R=1  (H=0 T=1)
+# KERNEL: ERROR  t=16503906250000 cycle=8450: expected RESTART (P=0 R=1), got P=0 R=0  (H=0 T=0)
+# KERNEL: ERROR  t=18003906250000 cycle=9218: expected IDLE (P=0 R=0), got P=1 R=0  (H=0 T=1)
+# KERNEL: ERROR  t=18005859375000 cycle=9219: expected PACE (P=1 R=0), got P=0 R=1  (H=0 T=1)
+# KERNEL: ERROR  t=18007812500000 cycle=9220: expected RESTART (P=0 R=1), got P=0 R=0  (H=0 T=0)
+# KERNEL: ERROR  t=19507812500000 cycle=9988: expected IDLE (P=0 R=0), got P=1 R=0  (H=0 T=1)
+# KERNEL: ERROR  t=19509765625000 cycle=9989: expected PACE (P=1 R=0), got P=0 R=1  (H=0 T=1)
+# KERNEL: ERROR  t=19511718750000 cycle=9990: expected RESTART (P=0 R=1), got P=0 R=0  (H=0 T=0)
+# KERNEL:   heart stopped 10 s: 7 paces, interval 770..770 cycles (1.504..1.504 s)
+# KERNEL:   ok   paces about every 1.5 s
+# KERNEL:   ok   heart recovered: pacing stopped
+# KERNEL: 
+# KERNEL: ================================
+# KERNEL: TESTS FAILED: 21 error(s)
+# KERNEL: ================================
+# RUNTIME: Info: RUNTIME_0068 tb_pacemaker_fsm.v (296): $finish called.
+# KERNEL: Time: 23941406250 ns,  Iteration: 1,  Instance: /tb_pacemaker_fsm,  Process: @INITIAL#198_9@.
+# KERNEL: stopped at time: 23941406250 ns
+# VSIM: Simulation has finished. There are no more test vectors to simulate.
+# Waveform file 'untitled.awc' connected to 'C:/Pacemaker-project/Digital_control_block/digital_control_block/src/wave.asdb'.
+run
+run
+alog -O2 -sve -msg 5 -sv2k23 -work digital_control_block $dsn/src/tb_pacemaker_fsm.v
+# Unit top modules: tb_pacemaker_fsm.
+# Compile success 0 Errors 0 Warnings  Analysis time: 0[s].
+# done
+# ELBREAD: Elaboration process.
+# ELBREAD: Elaboration time 0.0 [s].
+# 
+# KERNEL: Main thread initiated.
+# KERNEL: Kernel process initialization phase.
+# ELAB2: Elaboration final pass...
+# ELAB2: Create instances ...
+# KERNEL: Time resolution set to 1ps.
+# ELAB2: Create instances complete.
+# SLP: Started
+# SLP: Elaboration phase ...
+# SLP: Elaboration phase ... done : 0.0 [s]
+# SLP: Generation phase ...
+# SLP: Generation phase ... done : 0.5 [s]
+# SLP: Finished : 0.6 [s]
+# SLP: 26 (76.47%) primitives and 8 (23.53%) other processes in SLP
+# SLP: 99 (100.00%) signals in SLP and 0 interface signals
+# ELAB2: Elaboration final pass complete - time: 0.6 [s].
+# KERNEL: SLP loading done - time: 0.0 [s].
+# KERNEL: Warning: You are using the Active-HDL Student Edition. The performance of simulation is running at a reduced rate.
+# KERNEL: Warning: Contact Aldec for available upgrade options - sales@aldec.com.
+# KERNEL: SLP simulation initialization done - time: 0.0 [s].
+# KERNEL: Kernel process initialization done.
+# Allocation: Simulator allocated 4635 kB (elbread=427 elab2=4137 kernel=70 sdf=0)
+# KERNEL: ASDB file was created in location C:\Pacemaker-project\Digital_control_block\digital_control_block\src\wave.asdb
+#  3:50 PM, 18 November, 2026
+#  Simulation has been initialized
+# Waveform file 'untitled.awc' connected to 'C:/Pacemaker-project/Digital_control_block/digital_control_block/src/wave.asdb'.
+run
+# KERNEL: ==== Pacemaker FSM testbench ====
+# KERNEL: 
+# KERNEL: --- Part 1: next-state logic, all 16 rows ---
+# KERNEL:   A B H T | DA DB | expected
+# KERNEL:   0 0 0 0 |  0  0 |   0  0  
+# KERNEL:   0 0 0 1 |  1  0 |   1  0  
+# KERNEL:   0 0 1 0 |  0  1 |   0  1  
+# KERNEL:   0 0 1 1 |  0  1 |   0  1  
+# KERNEL:   0 1 0 0 |  0  0 |   0  0  
+# KERNEL:   0 1 0 1 |  0  0 |   0  0  
+# KERNEL:   0 1 1 0 |  0  1 |   0  1  
+# KERNEL:   0 1 1 1 |  0  1 |   0  1  
+# KERNEL:   1 0 0 0 |  0  1 |   0  1  
+# KERNEL:   1 0 0 1 |  0  1 |   0  1  
+# KERNEL:   1 0 1 0 |  0  1 |   0  1  
+# KERNEL:   1 0 1 1 |  0  1 |   0  1  
+# KERNEL:   1 1 0 0 |  0  0 |   0  0  
+# KERNEL:   1 1 0 1 |  0  0 |   0  0  
+# KERNEL:   1 1 1 0 |  0  0 |   0  0  
+# KERNEL:   1 1 1 1 |  0  0 |   0  0  
+# KERNEL: 
+# KERNEL: --- Part 2: directed scenarios ---
+# KERNEL:   ok   reset -> IDLE
+# KERNEL:   ok   idle, H=0 T=0 -> IDLE
+# KERNEL:   ok   idle, H=1 -> RESTART
+# KERNEL:   ok   restart, H held 1 -> RESTART
+# KERNEL:   ok   restart, H=0 -> IDLE
+# KERNEL:   ok   idle, T=1 -> PACE
+# KERNEL:   ok   pace -> restart -> RESTART
+# KERNEL:   ok   restart, H=0 T=1 (T ignored) -> IDLE
+# KERNEL:   ok   idle, H=1 T=1 -> RESTART
+# KERNEL:   ok   restart -> idle -> IDLE
+# KERNEL:   ok   idle, T=1 -> PACE
+# KERNEL:   ok   pace, H=1 -> RESTART
+# KERNEL:   ok   restart -> idle -> IDLE
+# KERNEL:   ok   idle, H=1 -> RESTART
+# KERNEL:   ok   async reset mid-cycle -> IDLE immediately
+# KERNEL: 
+# KERNEL: --- Part 3: 2000 random cycles vs reference model ---
+# KERNEL:   ok   no mismatches
+# KERNEL: 
+# KERNEL: --- Part 4: with timer model ---
+# KERNEL:   ok   60 bpm: no pacing
+# KERNEL:   heart stopped 10 s: 7 paces, interval 771..771 cycles (1.506..1.506 s)
+# KERNEL:   ok   paces about every 1.5 s
+# KERNEL:   ok   heart recovered: pacing stopped
+# KERNEL: 
+# KERNEL: ================================
+# KERNEL: ALL TESTS PASSED
+# KERNEL: ================================
+# RUNTIME: Info: RUNTIME_0068 tb_pacemaker_fsm.v (299): $finish called.
+# KERNEL: Time: 23941406250 ns,  Iteration: 1,  Instance: /tb_pacemaker_fsm,  Process: @INITIAL#201_9@.
+# KERNEL: stopped at time: 23941406250 ns
+# VSIM: Simulation has finished. There are no more test vectors to simulate.
+run
+alog -O2 -sve -msg 5 -sv2k23 -work digital_control_block $dsn/src/tb_pacemaker_fsm.v
+# Unit top modules: tb_pacemaker_fsm.
+# Compile success 0 Errors 0 Warnings  Analysis time: 0[s].
+# done
+# ELBREAD: Elaboration process.
+# ELBREAD: Elaboration time 0.0 [s].
+# 
+# KERNEL: Main thread initiated.
+# KERNEL: Kernel process initialization phase.
+# ELAB2: Elaboration final pass...
+# ELAB2: Create instances ...
+# KERNEL: Time resolution set to 1ps.
+# ELAB2: Create instances complete.
+# SLP: Started
+# SLP: Elaboration phase ...
+# SLP: Elaboration phase ... done : 0.2 [s]
+# SLP: Generation phase ...
+# SLP: Generation phase ... done : 0.7 [s]
+# SLP: Finished : 1.1 [s]
+# SLP: 26 (76.47%) primitives and 8 (23.53%) other processes in SLP
+# SLP: 99 (100.00%) signals in SLP and 0 interface signals
+# ELAB2: Elaboration final pass complete - time: 1.1 [s].
+# KERNEL: SLP loading done - time: 0.0 [s].
+# KERNEL: Warning: You are using the Active-HDL Student Edition. The performance of simulation is running at a reduced rate.
+# KERNEL: Warning: Contact Aldec for available upgrade options - sales@aldec.com.
+# KERNEL: SLP simulation initialization done - time: 0.0 [s].
+# KERNEL: Kernel process initialization done.
+# Allocation: Simulator allocated 4635 kB (elbread=427 elab2=4137 kernel=70 sdf=0)
+# KERNEL: ASDB file was created in location C:\Pacemaker-project\Digital_control_block\digital_control_block\src\wave.asdb
+#  2:18 PM, 19 November, 2026
+#  Simulation has been initialized
+# Waveform file 'untitled.awc' connected to 'C:/Pacemaker-project/Digital_control_block/digital_control_block/src/wave.asdb'.
+# add wave -noreg {/tb_pacemaker_fsm/CLK}
+# VSIM: 1 object(s) traced.
+# Waveform file 'untitled.awc' connected to 'C:/Pacemaker-project/Digital_control_block/digital_control_block/src/wave.asdb'.
+# add wave -noreg {/tb_pacemaker_fsm/RST_n}
+# VSIM: 1 object(s) traced.
+# add wave -noreg {/tb_pacemaker_fsm/T}
+# VSIM: 1 object(s) traced.
+# add wave -noreg {/tb_pacemaker_fsm/P}
+# VSIM: 1 object(s) traced.
+# add wave -noreg {/tb_pacemaker_fsm/R}
+# VSIM: 1 object(s) traced.
+# add wave -noreg {/tb_pacemaker_fsm/H}
+# VSIM: 1 object(s) traced.
+# add wave -noreg {/tb_pacemaker_fsm/ref_state}
+# VSIM: 1 object(s) traced.
+run
+# KERNEL: ==== Pacemaker FSM testbench ====
+# KERNEL: 
+# KERNEL: --- Part 1: next-state logic, all 16 rows ---
+# KERNEL:   A B H T | DA DB | expected
+# KERNEL:   0 0 0 0 |  0  0 |   0  0  
+# KERNEL:   0 0 0 1 |  1  0 |   1  0  
+# KERNEL:   0 0 1 0 |  0  1 |   0  1  
+# KERNEL:   0 0 1 1 |  0  1 |   0  1  
+# KERNEL:   0 1 0 0 |  0  0 |   0  0  
+# KERNEL:   0 1 0 1 |  0  0 |   0  0  
+# KERNEL:   0 1 1 0 |  0  1 |   0  1  
+# KERNEL:   0 1 1 1 |  0  1 |   0  1  
+# KERNEL:   1 0 0 0 |  0  1 |   0  1  
+# KERNEL:   1 0 0 1 |  0  1 |   0  1  
+# KERNEL:   1 0 1 0 |  0  1 |   0  1  
+# KERNEL:   1 0 1 1 |  0  1 |   0  1  
+# KERNEL:   1 1 0 0 |  0  0 |   0  0  
+# KERNEL:   1 1 0 1 |  0  0 |   0  0  
+# KERNEL:   1 1 1 0 |  0  0 |   0  0  
+# KERNEL:   1 1 1 1 |  0  0 |   0  0  
+# KERNEL: 
+# KERNEL: --- Part 2: directed scenarios ---
+# KERNEL:   ok   reset -> IDLE
+# KERNEL:   ok   idle, H=0 T=0 -> IDLE
+# KERNEL:   ok   idle, H=1 -> RESTART
+# KERNEL:   ok   restart, H held 1 -> RESTART
+# KERNEL:   ok   restart, H=0 -> IDLE
+# KERNEL:   ok   idle, T=1 -> PACE
+# KERNEL:   ok   pace -> restart -> RESTART
+# KERNEL:   ok   restart, H=0 T=1 (T ignored) -> IDLE
+# KERNEL:   ok   idle, H=1 T=1 -> RESTART
+# KERNEL:   ok   restart -> idle -> IDLE
+# KERNEL:   ok   idle, T=1 -> PACE
+# KERNEL:   ok   pace, H=1 -> RESTART
+# KERNEL:   ok   restart -> idle -> IDLE
+# KERNEL:   ok   idle, H=1 -> RESTART
+# KERNEL:   ok   async reset mid-cycle -> IDLE immediately
+# KERNEL: 
+# KERNEL: --- Part 3: 2000 random cycles vs reference model ---
+# KERNEL:   ok   no mismatches
+# KERNEL: 
+# KERNEL: --- Part 4: with timer model ---
+# KERNEL:   ok   60 bpm: no pacing
+# KERNEL:   heart stopped 10 s: 7 paces, interval 771..771 cycles (1.506..1.506 s)
+# KERNEL:   ok   paces about every 1.5 s
+# KERNEL:   ok   heart recovered: pacing stopped
+# KERNEL: 
+# KERNEL: ================================
+# KERNEL: ALL TESTS PASSED
+# KERNEL: ================================
+# RUNTIME: Info: RUNTIME_0068 tb_pacemaker_fsm.v (299): $finish called.
+# KERNEL: Time: 23941406250 ns,  Iteration: 1,  Instance: /tb_pacemaker_fsm,  Process: @INITIAL#201_9@.
+# KERNEL: stopped at time: 23941406250 ns
+# VSIM: Simulation has finished. There are no more test vectors to simulate.
+# WAVEFORM: 2 signal(s) removed.
+run
+run
+# add wave -noreg {/tb_pacemaker_fsm/P}
+# KERNEL: Warning: KERNEL_0291 Object "/tb_pacemaker_fsm/P" has already been traced.
+# VSIM: 0 object(s) traced.
+# add wave -noreg {/tb_pacemaker_fsm/R}
+# KERNEL: Warning: KERNEL_0291 Object "/tb_pacemaker_fsm/R" has already been traced.
+# VSIM: 0 object(s) traced.
+endsim
+# VSIM: Simulation has finished.
+asim -O5 +access +r +m+tb_pacemaker_fsm tb_pacemaker_fsm
+# ELBREAD: Elaboration process.
+# ELBREAD: Elaboration time 0.0 [s].
+# VSIM: Stack memory: 32MB
+# VSIM: Retval memory: 32MB
+# 
+# KERNEL: Main thread initiated.
+# KERNEL: Kernel process initialization phase.
+# ELAB2: Elaboration final pass...
+# ELAB2: Create instances ...
+# KERNEL: Time resolution set to 1ps.
+# ELAB2: Create instances complete.
+# SLP: Started
+# SLP: Finished. Using existing simulator library
+# SLP: 26 (76.47%) primitives and 8 (23.53%) other processes in SLP
+# SLP: 99 (100.00%) signals in SLP and 0 interface signals
+# ELAB2: Elaboration final pass complete - time: 0.3 [s].
+# KERNEL: SLP loading done - time: 0.0 [s].
+# KERNEL: Warning: You are using the Active-HDL Student Edition. The performance of simulation is running at a reduced rate.
+# KERNEL: Warning: Contact Aldec for available upgrade options - sales@aldec.com.
+# KERNEL: SLP simulation initialization done - time: 0.0 [s].
+# KERNEL: Kernel process initialization done.
+# Allocation: Simulator allocated 4635 kB (elbread=427 elab2=4137 kernel=70 sdf=0)
+# KERNEL: ASDB file was created in location C:\Pacemaker-project\Digital_control_block\digital_control_block\src\wave.asdb
+#  5:24 PM, 19 November, 2026
+#  Simulation has been initialized
+# Waveform file 'untitled.awc' connected to 'C:/Pacemaker-project/Digital_control_block/digital_control_block/src/wave.asdb'.
+# Waveform file 'untitled.awc' connected to 'C:/Pacemaker-project/Digital_control_block/digital_control_block/src/wave.asdb'.
+# KERNEL: Warning: KERNEL_0291 Object "/tb_pacemaker_fsm/P" has already been traced.
+# WAVEFORM: 2 object(s) inserted to virtual bus 'VBus0'.
+run
+# KERNEL: ==== Pacemaker FSM testbench ====
+# KERNEL: 
+# KERNEL: --- Part 1: next-state logic, all 16 rows ---
+# KERNEL:   A B H T | DA DB | expected
+# KERNEL:   0 0 0 0 |  0  0 |   0  0  
+# KERNEL:   0 0 0 1 |  1  0 |   1  0  
+# KERNEL:   0 0 1 0 |  0  1 |   0  1  
+# KERNEL:   0 0 1 1 |  0  1 |   0  1  
+# KERNEL:   0 1 0 0 |  0  0 |   0  0  
+# KERNEL:   0 1 0 1 |  0  0 |   0  0  
+# KERNEL:   0 1 1 0 |  0  1 |   0  1  
+# KERNEL:   0 1 1 1 |  0  1 |   0  1  
+# KERNEL:   1 0 0 0 |  0  1 |   0  1  
+# KERNEL:   1 0 0 1 |  0  1 |   0  1  
+# KERNEL:   1 0 1 0 |  0  1 |   0  1  
+# KERNEL:   1 0 1 1 |  0  1 |   0  1  
+# KERNEL:   1 1 0 0 |  0  0 |   0  0  
+# KERNEL:   1 1 0 1 |  0  0 |   0  0  
+# KERNEL:   1 1 1 0 |  0  0 |   0  0  
+# KERNEL:   1 1 1 1 |  0  0 |   0  0  
+# KERNEL: 
+# KERNEL: --- Part 2: directed scenarios ---
+# KERNEL:   ok   reset -> IDLE
+# KERNEL:   ok   idle, H=0 T=0 -> IDLE
+# KERNEL:   ok   idle, H=1 -> RESTART
+# KERNEL:   ok   restart, H held 1 -> RESTART
+# KERNEL:   ok   restart, H=0 -> IDLE
+# KERNEL:   ok   idle, T=1 -> PACE
+# KERNEL:   ok   pace -> restart -> RESTART
+# KERNEL:   ok   restart, H=0 T=1 (T ignored) -> IDLE
+# KERNEL:   ok   idle, H=1 T=1 -> RESTART
+# KERNEL:   ok   restart -> idle -> IDLE
+# KERNEL:   ok   idle, T=1 -> PACE
+# KERNEL:   ok   pace, H=1 -> RESTART
+# KERNEL:   ok   restart -> idle -> IDLE
+# KERNEL:   ok   idle, H=1 -> RESTART
+# KERNEL:   ok   async reset mid-cycle -> IDLE immediately
+# KERNEL: 
+# KERNEL: --- Part 3: 2000 random cycles vs reference model ---
+# KERNEL:   ok   no mismatches
+# KERNEL: 
+# KERNEL: --- Part 4: with timer model ---
+# KERNEL:   ok   60 bpm: no pacing
+# KERNEL:   heart stopped 10 s: 7 paces, interval 771..771 cycles (1.506..1.506 s)
+# KERNEL:   ok   paces about every 1.5 s
+# KERNEL:   ok   heart recovered: pacing stopped
+# KERNEL: 
+# KERNEL: ================================
+# KERNEL: ALL TESTS PASSED
+# KERNEL: ================================
+# RUNTIME: Info: RUNTIME_0068 tb_pacemaker_fsm.v (299): $finish called.
+# KERNEL: Time: 23941406250 ns,  Iteration: 1,  Instance: /tb_pacemaker_fsm,  Process: @INITIAL#201_9@.
+# KERNEL: stopped at time: 23941406250 ns
+# VSIM: Simulation has finished. There are no more test vectors to simulate.
+# Waveform file 'C:/Pacemaker-project/Digital_control_block/digital_control_block/src/FSM_no_timer.awc' connected to 'C:/Pacemaker-project/Digital_control_block/digital_control_block/src/FSM_no_timer.asdb'.
+# WAVEFORM: 2 object(s) inserted to virtual bus 'VBus0'.
+# Adding file C:\Pacemaker-project\Digital_control_block\digital_control_block\src\FSM_no_timer.asdb ... Done
+# Adding file C:\Pacemaker-project\Digital_control_block\digital_control_block\src\FSM_no_timer.awc ... Done
+# add wave -noreg {/tb_pacemaker_fsm/cnt}
+# WAVEFORM: Warning: Object matching "/tb_pacemaker_fsm/cnt" not found in "C:/Pacemaker-project/Digital_control_block/digital_control_block/src/FSM_no_timer.asdb".
+# add wave -noreg {/tb_pacemaker_fsm/cnt}
+# WAVEFORM: Warning: Object matching "/tb_pacemaker_fsm/cnt" not found in "C:/Pacemaker-project/Digital_control_block/digital_control_block/src/FSM_no_timer.asdb".
+# add wave -noreg {/tb_pacemaker_fsm/cnt}
+# VSIM: 1 object(s) traced.
+# add wave -noreg {/tb_pacemaker_fsm/CLK}
+# KERNEL: Warning: KERNEL_0291 Object "/tb_pacemaker_fsm/CLK" has already been traced.
+# VSIM: 0 object(s) traced.
+run
+run
+alog -O2 -sve -msg 5 -sv2k23 -work digital_control_block $dsn/src/dff_pc.v $dsn/src/pacemaker_fsm.v
+# Compile success 0 Errors 0 Warnings  Analysis time: 0[s].
+# done
+# ELBREAD: Elaboration process.
+# ELBREAD: Elaboration time 0.0 [s].
+# 
+# KERNEL: Main thread initiated.
+# KERNEL: Kernel process initialization phase.
+# ELAB2: Elaboration final pass...
+# ELAB2: Create instances ...
+# KERNEL: Time resolution set to 1ps.
+# ELAB2: Create instances complete.
+# SLP: Started
+# SLP: Elaboration phase ...
+# SLP: Elaboration phase ... done : 0.0 [s]
+# SLP: Generation phase ...
+# SLP: Generation phase ... done : 0.8 [s]
+# SLP: Finished : 0.8 [s]
+# SLP: 26 (76.47%) primitives and 8 (23.53%) other processes in SLP
+# SLP: 96 (100.00%) signals in SLP and 0 interface signals
+# ELAB2: Elaboration final pass complete - time: 0.8 [s].
+# KERNEL: SLP loading done - time: 0.0 [s].
+# KERNEL: Warning: You are using the Active-HDL Student Edition. The performance of simulation is running at a reduced rate.
+# KERNEL: Warning: Contact Aldec for available upgrade options - sales@aldec.com.
+# KERNEL: SLP simulation initialization done - time: 0.0 [s].
+# KERNEL: Kernel process initialization done.
+# Allocation: Simulator allocated 4635 kB (elbread=427 elab2=4137 kernel=70 sdf=0)
+# KERNEL: ASDB file was created in location C:\Pacemaker-project\Digital_control_block\digital_control_block\src\wave.asdb
+#  5:32 PM, 19 November, 2026
+#  Simulation has been initialized
+# add wave -noreg {/tb_pacemaker_fsm/CLK}
+# KERNEL: Warning: KERNEL_0291 Object "/tb_pacemaker_fsm/CLK" has already been traced.
+# VSIM: 0 object(s) traced.
+# Waveform file 'untitled.awc' connected to 'C:/Pacemaker-project/Digital_control_block/digital_control_block/src/wave.asdb'.
+# add wave -noreg {/tb_pacemaker_fsm/H}
+# KERNEL: Warning: KERNEL_0291 Object "/tb_pacemaker_fsm/H" has already been traced.
+# VSIM: 0 object(s) traced.
+# add wave -noreg {/tb_pacemaker_fsm/P}
+# KERNEL: Warning: KERNEL_0291 Object "/tb_pacemaker_fsm/P" has already been traced.
+# VSIM: 0 object(s) traced.
+# add wave -noreg {/tb_pacemaker_fsm/R}
+# KERNEL: Warning: KERNEL_0291 Object "/tb_pacemaker_fsm/R" has already been traced.
+# VSIM: 0 object(s) traced.
+# add wave -noreg {/tb_pacemaker_fsm/T}
+# KERNEL: Warning: KERNEL_0291 Object "/tb_pacemaker_fsm/T" has already been traced.
+# VSIM: 0 object(s) traced.
+run
+# KERNEL: ==== Pacemaker FSM testbench ====
+# KERNEL: 
+# KERNEL: --- Part 1: next-state logic, all 16 rows ---
+# KERNEL:   A B H T | DA DB | expected
+# KERNEL:   0 0 0 0 |  0  0 |   0  0  
+# KERNEL:   0 0 0 1 |  1  0 |   1  0  
+# KERNEL:   0 0 1 0 |  0  1 |   0  1  
+# KERNEL:   0 0 1 1 |  0  1 |   0  1  
+# KERNEL:   0 1 0 0 |  0  0 |   0  0  
+# KERNEL:   0 1 0 1 |  0  0 |   0  0  
+# KERNEL:   0 1 1 0 |  0  1 |   0  1  
+# KERNEL:   0 1 1 1 |  0  1 |   0  1  
+# KERNEL:   1 0 0 0 |  0  1 |   0  1  
+# KERNEL:   1 0 0 1 |  0  1 |   0  1  
+# KERNEL:   1 0 1 0 |  0  1 |   0  1  
+# KERNEL:   1 0 1 1 |  0  1 |   0  1  
+# KERNEL:   1 1 0 0 |  0  0 |   0  0  
+# KERNEL:   1 1 0 1 |  0  0 |   0  0  
+# KERNEL:   1 1 1 0 |  0  0 |   0  0  
+# KERNEL:   1 1 1 1 |  0  0 |   0  0  
+# KERNEL: 
+# KERNEL: --- Part 2: directed scenarios ---
+# KERNEL:   ok   reset -> IDLE
+# KERNEL:   ok   idle, H=0 T=0 -> IDLE
+# KERNEL:   ok   idle, H=1 -> RESTART
+# KERNEL:   ok   restart, H held 1 -> RESTART
+# KERNEL:   ok   restart, H=0 -> IDLE
+# KERNEL:   ok   idle, T=1 -> PACE
+# KERNEL:   ok   pace -> restart -> RESTART
+# KERNEL:   ok   restart, H=0 T=1 (T ignored) -> IDLE
+# KERNEL:   ok   idle, H=1 T=1 -> RESTART
+# KERNEL:   ok   restart -> idle -> IDLE
+# KERNEL:   ok   idle, T=1 -> PACE
+# KERNEL:   ok   pace, H=1 -> RESTART
+# KERNEL:   ok   restart -> idle -> IDLE
+# KERNEL:   ok   idle, H=1 -> RESTART
+# KERNEL:   ok   async reset mid-cycle -> IDLE immediately
+# KERNEL: 
+# KERNEL: --- Part 3: 2000 random cycles vs reference model ---
+# KERNEL:   ok   no mismatches
+# KERNEL: 
+# KERNEL: --- Part 4: with timer model ---
+# KERNEL:   ok   60 bpm: no pacing
+# KERNEL:   heart stopped 10 s: 7 paces, interval 771..771 cycles (1.506..1.506 s)
+# KERNEL:   ok   paces about every 1.5 s
+# KERNEL:   ok   heart recovered: pacing stopped
+# KERNEL: 
+# KERNEL: ================================
+# KERNEL: ALL TESTS PASSED
+# KERNEL: ================================
+# RUNTIME: Info: RUNTIME_0068 tb_pacemaker_fsm.v (299): $finish called.
+# KERNEL: Time: 23941406250 ns,  Iteration: 1,  Instance: /tb_pacemaker_fsm,  Process: @INITIAL#201_9@.
+# KERNEL: stopped at time: 23941406250 ns
+# VSIM: Simulation has finished. There are no more test vectors to simulate.
+# add wave -noreg {/tb_pacemaker_fsm/IDLE}
+# VSIM: 1 object(s) traced.
+# add wave -noreg {/tb_pacemaker_fsm/PACE}
+# VSIM: 1 object(s) traced.
+# add wave -noreg {/tb_pacemaker_fsm/RESTART}
+# VSIM: 1 object(s) traced.
+# add wave -noreg {/tb_pacemaker_fsm/UNUSED}
+# VSIM: 1 object(s) traced.
+run
+run
+alog -O2 -sve -msg 5 -sv2k23 -work digital_control_block $dsn/src/dff_c.v
+# Compile success 0 Errors 0 Warnings  Analysis time: 0[s].
+# done
+alog -O2 -sve -msg 5 -sv2k23 -work digital_control_block $dsn/src/fsm_next_state.v
+# Compile success 0 Errors 0 Warnings  Analysis time: 0[s].
+# done
+alog -O2 -sve -msg 5 -sv2k23 -work digital_control_block $dsn/src/pacemaker_fsm.v
+# Compile success 0 Errors 0 Warnings  Analysis time: 0[s].
+# done
+alog -O2 -sve -msg 5 -sv2k23 -work digital_control_block $dsn/src/pacemaker_timer.v
+# Unit top modules: pacemaker_timer.
+# Compile success 0 Errors 0 Warnings  Analysis time: 0[s].
+# done
+alog -O2 -sve -msg 5 -sv2k23 -work digital_control_block $dsn/src/pacemaker_digital.v
+# Unit top modules: pacemaker_digital.
+# Compile success 0 Errors 0 Warnings  Analysis time: 0[s].
+# done
+alog -O2 -sve -msg 5 -sv2k23 -work digital_control_block $dsn/src/tb_pacemaker_digital.v
+# Unit top modules: tb_pacemaker_digital.
+# Compile success 0 Errors 0 Warnings  Analysis time: 0[s].
+# done
+alog -O2 -sve -msg 5 -sv2k23 -work digital_control_block $dsn/src/tb_pacemaker_fsm.v
+# Unit top modules: tb_pacemaker_fsm.
+# Compile success 0 Errors 0 Warnings  Analysis time: 0[s].
+# done
+run
+alog -O2 -sve -msg 5 -sv2k23 -work digital_control_block $dsn/src/tb_pacemaker_digital.v
+# Unit top modules: tb_pacemaker_digital.
+# Compile success 0 Errors 0 Warnings  Analysis time: 0[s].
+# done
+run
+# add wave -noreg {/tb_pacemaker_fsm/CLK}
+# KERNEL: Warning: KERNEL_0291 Object "/tb_pacemaker_fsm/CLK" has already been traced.
+# VSIM: 0 object(s) traced.
+# Waveform file 'untitled.awc' connected to 'C:/Pacemaker-project/Digital_control_block/digital_control_block/src/wave.asdb'.
+# add wave -noreg {/tb_pacemaker_fsm/H}
+# KERNEL: Warning: KERNEL_0291 Object "/tb_pacemaker_fsm/H" has already been traced.
+# VSIM: 0 object(s) traced.
+# add wave -noreg {/tb_pacemaker_fsm/T}
+# KERNEL: Warning: KERNEL_0291 Object "/tb_pacemaker_fsm/T" has already been traced.
+# VSIM: 0 object(s) traced.
+# add wave -noreg {/tb_pacemaker_fsm/P}
+# KERNEL: Warning: KERNEL_0291 Object "/tb_pacemaker_fsm/P" has already been traced.
+# VSIM: 0 object(s) traced.
+# add wave -noreg {/tb_pacemaker_fsm/R}
+# KERNEL: Warning: KERNEL_0291 Object "/tb_pacemaker_fsm/R" has already been traced.
+# VSIM: 0 object(s) traced.
+# add wave -noreg {/tb_pacemaker_fsm/cnt}
+# KERNEL: Warning: KERNEL_0291 Object "/tb_pacemaker_fsm/cnt" has already been traced.
+# VSIM: 0 object(s) traced.
+run
+run
+endsim
+# VSIM: Simulation has finished.
+asim -O5 +access +r +m+tb_pacemaker_fsm tb_pacemaker_fsm
+# ELBREAD: Elaboration process.
+# ELBREAD: Elaboration time 0.0 [s].
+# VSIM: Stack memory: 32MB
+# VSIM: Retval memory: 32MB
+# 
+# KERNEL: Main thread initiated.
+# KERNEL: Kernel process initialization phase.
+# ELAB2: Elaboration final pass...
+# ELAB2: Create instances ...
+# KERNEL: Time resolution set to 1ps.
+# ELAB2: Create instances complete.
+# SLP: Started
+# SLP: Elaboration phase ...
+# SLP: Elaboration phase ... done : 0.0 [s]
+# SLP: Generation phase ...
+# SLP: Generation phase ... done : 0.3 [s]
+# SLP: Finished : 0.4 [s]
+# SLP: 26 (76.47%) primitives and 8 (23.53%) other processes in SLP
+# SLP: 96 (100.00%) signals in SLP and 0 interface signals
+# ELAB2: Elaboration final pass complete - time: 0.4 [s].
+# KERNEL: SLP loading done - time: 0.0 [s].
+# KERNEL: Warning: You are using the Active-HDL Student Edition. The performance of simulation is running at a reduced rate.
+# KERNEL: Warning: Contact Aldec for available upgrade options - sales@aldec.com.
+# KERNEL: SLP simulation initialization done - time: 0.0 [s].
+# KERNEL: Kernel process initialization done.
+# Allocation: Simulator allocated 4635 kB (elbread=427 elab2=4137 kernel=70 sdf=0)
+# KERNEL: ASDB file was created in location C:\Pacemaker-project\Digital_control_block\digital_control_block\src\wave.asdb
+#  6:18 PM, 19 November, 2026
+#  Simulation has been initialized
+# Waveform file 'untitled.awc' connected to 'C:/Pacemaker-project/Digital_control_block/digital_control_block/src/wave.asdb'.
+run
+# KERNEL: ==== Pacemaker FSM testbench ====
+# KERNEL: 
+# KERNEL: --- Part 1: next-state logic, all 16 rows ---
+# KERNEL:   A B H T | DA DB | expected
+# KERNEL:   0 0 0 0 |  0  0 |   0  0  
+# KERNEL:   0 0 0 1 |  1  0 |   1  0  
+# KERNEL:   0 0 1 0 |  0  1 |   0  1  
+# KERNEL:   0 0 1 1 |  0  1 |   0  1  
+# KERNEL:   0 1 0 0 |  0  0 |   0  0  
+# KERNEL:   0 1 0 1 |  0  0 |   0  0  
+# KERNEL:   0 1 1 0 |  0  1 |   0  1  
+# KERNEL:   0 1 1 1 |  0  1 |   0  1  
+# KERNEL:   1 0 0 0 |  0  1 |   0  1  
+# KERNEL:   1 0 0 1 |  0  1 |   0  1  
+# KERNEL:   1 0 1 0 |  0  1 |   0  1  
+# KERNEL:   1 0 1 1 |  0  1 |   0  1  
+# KERNEL:   1 1 0 0 |  0  0 |   0  0  
+# KERNEL:   1 1 0 1 |  0  0 |   0  0  
+# KERNEL:   1 1 1 0 |  0  0 |   0  0  
+# KERNEL:   1 1 1 1 |  0  0 |   0  0  
+# KERNEL: 
+# KERNEL: --- Part 2: directed scenarios ---
+# KERNEL:   ok   reset -> IDLE
+# KERNEL:   ok   idle, H=0 T=0 -> IDLE
+# KERNEL:   ok   idle, H=1 -> RESTART
+# KERNEL:   ok   restart, H held 1 -> RESTART
+# KERNEL:   ok   restart, H=0 -> IDLE
+# KERNEL:   ok   idle, T=1 -> PACE
+# KERNEL:   ok   pace -> restart -> RESTART
+# KERNEL:   ok   restart, H=0 T=1 (T ignored) -> IDLE
+# KERNEL:   ok   idle, H=1 T=1 -> RESTART
+# KERNEL:   ok   restart -> idle -> IDLE
+# KERNEL:   ok   idle, T=1 -> PACE
+# KERNEL:   ok   pace, H=1 -> RESTART
+# KERNEL:   ok   restart -> idle -> IDLE
+# KERNEL:   ok   idle, H=1 -> RESTART
+# KERNEL:   ok   async reset mid-cycle -> IDLE immediately
+# KERNEL: 
+# KERNEL: --- Part 3: 2000 random cycles vs reference model ---
+# KERNEL:   ok   no mismatches
+# KERNEL: 
+# KERNEL: --- Part 4: with timer model ---
+# KERNEL:   ok   60 bpm: no pacing
+# KERNEL:   heart stopped 10 s: 7 paces, interval 771..771 cycles (1.506..1.506 s)
+# KERNEL:   ok   paces about every 1.5 s
+# KERNEL:   ok   heart recovered: pacing stopped
+# KERNEL: 
+# KERNEL: ================================
+# KERNEL: ALL TESTS PASSED
+# KERNEL: ================================
+# RUNTIME: Info: RUNTIME_0068 tb_pacemaker_fsm.v (299): $finish called.
+# KERNEL: Time: 23941406250 ns,  Iteration: 1,  Instance: /tb_pacemaker_fsm,  Process: @INITIAL#201_9@.
+# KERNEL: stopped at time: 23941406250 ns
+# VSIM: Simulation has finished. There are no more test vectors to simulate.
+run
+endsim
+# VSIM: Simulation has finished.
+asim -O5 +access +r +m+tb_pacemaker_fsm tb_pacemaker_fsm
+# ELBREAD: Elaboration process.
+# ELBREAD: Elaboration time 0.0 [s].
+# VSIM: Stack memory: 32MB
+# VSIM: Retval memory: 32MB
+# 
+# KERNEL: Main thread initiated.
+# KERNEL: Kernel process initialization phase.
+# ELAB2: Elaboration final pass...
+# ELAB2: Create instances ...
+# KERNEL: Time resolution set to 1ps.
+# ELAB2: Create instances complete.
+# SLP: Started
+# SLP: Finished. Using existing simulator library
+# SLP: 26 (76.47%) primitives and 8 (23.53%) other processes in SLP
+# SLP: 96 (100.00%) signals in SLP and 0 interface signals
+# ELAB2: Elaboration final pass complete - time: 0.0 [s].
+# KERNEL: SLP loading done - time: 0.0 [s].
+# KERNEL: Warning: You are using the Active-HDL Student Edition. The performance of simulation is running at a reduced rate.
+# KERNEL: Warning: Contact Aldec for available upgrade options - sales@aldec.com.
+# KERNEL: SLP simulation initialization done - time: 0.0 [s].
+# KERNEL: Kernel process initialization done.
+# Allocation: Simulator allocated 4635 kB (elbread=427 elab2=4137 kernel=70 sdf=0)
+# KERNEL: ASDB file was created in location C:\Pacemaker-project\Digital_control_block\digital_control_block\src\wave.asdb
+#  6:19 PM, 19 November, 2026
+#  Simulation has been initialized
+# Waveform file 'untitled.awc' connected to 'C:/Pacemaker-project/Digital_control_block/digital_control_block/src/wave.asdb'.
+run
+# KERNEL: ==== Pacemaker FSM testbench ====
+# KERNEL: 
+# KERNEL: --- Part 1: next-state logic, all 16 rows ---
+# KERNEL:   A B H T | DA DB | expected
+# KERNEL:   0 0 0 0 |  0  0 |   0  0  
+# KERNEL:   0 0 0 1 |  1  0 |   1  0  
+# KERNEL:   0 0 1 0 |  0  1 |   0  1  
+# KERNEL:   0 0 1 1 |  0  1 |   0  1  
+# KERNEL:   0 1 0 0 |  0  0 |   0  0  
+# KERNEL:   0 1 0 1 |  0  0 |   0  0  
+# KERNEL:   0 1 1 0 |  0  1 |   0  1  
+# KERNEL:   0 1 1 1 |  0  1 |   0  1  
+# KERNEL:   1 0 0 0 |  0  1 |   0  1  
+# KERNEL:   1 0 0 1 |  0  1 |   0  1  
+# KERNEL:   1 0 1 0 |  0  1 |   0  1  
+# KERNEL:   1 0 1 1 |  0  1 |   0  1  
+# KERNEL:   1 1 0 0 |  0  0 |   0  0  
+# KERNEL:   1 1 0 1 |  0  0 |   0  0  
+# KERNEL:   1 1 1 0 |  0  0 |   0  0  
+# KERNEL:   1 1 1 1 |  0  0 |   0  0  
+# KERNEL: 
+# KERNEL: --- Part 2: directed scenarios ---
+# KERNEL:   ok   reset -> IDLE
+# KERNEL:   ok   idle, H=0 T=0 -> IDLE
+# KERNEL:   ok   idle, H=1 -> RESTART
+# KERNEL:   ok   restart, H held 1 -> RESTART
+# KERNEL:   ok   restart, H=0 -> IDLE
+# KERNEL:   ok   idle, T=1 -> PACE
+# KERNEL:   ok   pace -> restart -> RESTART
+# KERNEL:   ok   restart, H=0 T=1 (T ignored) -> IDLE
+# KERNEL:   ok   idle, H=1 T=1 -> RESTART
+# KERNEL:   ok   restart -> idle -> IDLE
+# KERNEL:   ok   idle, T=1 -> PACE
+# KERNEL:   ok   pace, H=1 -> RESTART
+# KERNEL:   ok   restart -> idle -> IDLE
+# KERNEL:   ok   idle, H=1 -> RESTART
+# KERNEL:   ok   async reset mid-cycle -> IDLE immediately
+# KERNEL: 
+# KERNEL: --- Part 3: 2000 random cycles vs reference model ---
+# KERNEL:   ok   no mismatches
+# KERNEL: 
+# KERNEL: --- Part 4: with timer model ---
+# KERNEL:   ok   60 bpm: no pacing
+# KERNEL:   heart stopped 10 s: 7 paces, interval 771..771 cycles (1.506..1.506 s)
+# KERNEL:   ok   paces about every 1.5 s
+# KERNEL:   ok   heart recovered: pacing stopped
+# KERNEL: 
+# KERNEL: ================================
+# KERNEL: ALL TESTS PASSED
+# KERNEL: ================================
+# RUNTIME: Info: RUNTIME_0068 tb_pacemaker_fsm.v (299): $finish called.
+# KERNEL: Time: 23941406250 ns,  Iteration: 1,  Instance: /tb_pacemaker_fsm,  Process: @INITIAL#201_9@.
+# KERNEL: stopped at time: 23941406250 ns
+# VSIM: Simulation has finished. There are no more test vectors to simulate.
+endsim
+# VSIM: Simulation has finished.
+# ELBREAD: Elaboration process.
+# ELBREAD: Elaboration time 0.0 [s].
+asim -O5 +access +r +m+tb_pacemaker_digital tb_pacemaker_digital
+# ELBREAD: Elaboration process.
+# ELBREAD: Elaboration time 0.0 [s].
+# VSIM: Stack memory: 32MB
+# VSIM: Retval memory: 32MB
+# 
+# KERNEL: Main thread initiated.
+# KERNEL: Kernel process initialization phase.
+# ELAB2: Elaboration final pass...
+# ELAB2: Create instances ...
+# KERNEL: Time resolution set to 1ps.
+# ELAB2: Create instances complete.
+# SLP: Started
+# SLP: Elaboration phase ...
+# SLP: Elaboration phase ... done : 0.0 [s]
+# SLP: Generation phase ...
+# SLP: Generation phase ... done : 0.4 [s]
+# SLP: Finished : 0.4 [s]
+# SLP: 83 (92.22%) primitives and 7 (7.78%) other processes in SLP
+# SLP: 157 (100.00%) signals in SLP and 0 interface signals
+# ELAB2: Elaboration final pass complete - time: 0.4 [s].
+# KERNEL: SLP loading done - time: 0.0 [s].
+# KERNEL: Warning: You are using the Active-HDL Student Edition. The performance of simulation is running at a reduced rate.
+# KERNEL: Warning: Contact Aldec for available upgrade options - sales@aldec.com.
+# KERNEL: SLP simulation initialization done - time: 0.0 [s].
+# KERNEL: Kernel process initialization done.
+# Allocation: Simulator allocated 4616 kB (elbread=428 elab2=4116 kernel=71 sdf=0)
+# KERNEL: ASDB file was created in location C:\Pacemaker-project\Digital_control_block\digital_control_block\src\wave.asdb
+#  6:23 PM, 19 November, 2026
+#  Simulation has been initialized
+# Waveform file 'untitled.awc' connected to 'C:/Pacemaker-project/Digital_control_block/digital_control_block/src/wave.asdb'.
+# WAVEFORM: Warning: Object matching "/tb_pacemaker_fsm/CLK" not found in "C:/Pacemaker-project/Digital_control_block/digital_control_block/src/wave.asdb".
+# WAVEFORM: Warning: Object matching "/tb_pacemaker_fsm/H" not found in "C:/Pacemaker-project/Digital_control_block/digital_control_block/src/wave.asdb".
+# WAVEFORM: Warning: Object matching "/tb_pacemaker_fsm/T" not found in "C:/Pacemaker-project/Digital_control_block/digital_control_block/src/wave.asdb".
+# WAVEFORM: Warning: Object matching "/tb_pacemaker_fsm/P" not found in "C:/Pacemaker-project/Digital_control_block/digital_control_block/src/wave.asdb".
+# WAVEFORM: Warning: Object matching "/tb_pacemaker_fsm/R" not found in "C:/Pacemaker-project/Digital_control_block/digital_control_block/src/wave.asdb".
+# WAVEFORM: Warning: Object matching "/tb_pacemaker_fsm/cnt" not found in "C:/Pacemaker-project/Digital_control_block/digital_control_block/src/wave.asdb".
+run
+# KERNEL: ==== Pacemaker digital block ====
+# KERNEL: 60 bpm (1.0 s between beats)
+# KERNEL: 43 bpm (1.4 s between beats)
+# KERNEL: 30 bpm (2.0 s between beats)
+# KERNEL:   PACE at t =   10.739 s  (30 bpm)
+# KERNEL:   PACE at t =   12.739 s  (30 bpm)
+# KERNEL:   PACE at t =   14.739 s  (30 bpm)
+# KERNEL: heart stopped (6 s)
+# KERNEL:   PACE at t =   16.245 s  (heart stopped)
+# KERNEL:   PACE at t =   17.751 s  (heart stopped)
+# KERNEL:   PACE at t =   19.257 s  (heart stopped)
+# KERNEL:   PACE at t =   20.763 s  (heart stopped)
+# KERNEL: recovered, 60 bpm
+# KERNEL: ==== done at t = 25.205 s ====
+# RUNTIME: Info: RUNTIME_0068 tb_pacemaker_digital.v (100): $finish called.
+# KERNEL: Time: 25205078125 ns,  Iteration: 1,  Instance: /tb_pacemaker_digital,  Process: @INITIAL#73_6@.
+# KERNEL: stopped at time: 25205078125 ns
+# VSIM: Simulation has finished. There are no more test vectors to simulate.
+# add wave -noreg {/tb_pacemaker_digital/CLK}
+# VSIM: 1 object(s) traced.
+# Waveform file 'untitled.awc' connected to 'C:/Pacemaker-project/Digital_control_block/digital_control_block/src/wave.asdb'.
+# add wave -noreg {/tb_pacemaker_digital/H}
+# VSIM: 1 object(s) traced.
+# add wave -noreg {/tb_pacemaker_digital/P}
+# VSIM: 1 object(s) traced.
+# add wave -noreg {/tb_pacemaker_digital/R}
+# VSIM: 1 object(s) traced.
+# add wave -noreg {/tb_pacemaker_digital/T}
+# VSIM: 1 object(s) traced.
+# add wave -noreg {/tb_pacemaker_digital/count}
+# VSIM: 1 object(s) traced.
+run
+run
+run
+restart
+# ELBREAD: Elaboration process.
+# ELBREAD: Elaboration time 0.0 [s].
+# 
+# KERNEL: Main thread initiated.
+# KERNEL: Kernel process initialization phase.
+# ELAB2: Elaboration final pass...
+# ELAB2: Create instances ...
+# KERNEL: Time resolution set to 1ps.
+# ELAB2: Create instances complete.
+# SLP: Started
+# SLP: Finished. Using existing simulator library
+# SLP: 83 (92.22%) primitives and 7 (7.78%) other processes in SLP
+# SLP: 157 (100.00%) signals in SLP and 0 interface signals
+# ELAB2: Elaboration final pass complete - time: 0.0 [s].
+# KERNEL: SLP loading done - time: 0.0 [s].
+# KERNEL: Warning: You are using the Active-HDL Student Edition. The performance of simulation is running at a reduced rate.
+# KERNEL: Warning: Contact Aldec for available upgrade options - sales@aldec.com.
+# KERNEL: SLP simulation initialization done - time: 0.0 [s].
+# KERNEL: Kernel process initialization done.
+# Allocation: Simulator allocated 4616 kB (elbread=428 elab2=4116 kernel=71 sdf=0)
+# KERNEL: ASDB file was created in location C:\Pacemaker-project\Digital_control_block\digital_control_block\src\wave.asdb
+#  6:26 PM, 19 November, 2026
+#  Simulation has been initialized
+# Waveform file 'untitled.awc' connected to 'C:/Pacemaker-project/Digital_control_block/digital_control_block/src/wave.asdb'.
+run
+# KERNEL: ==== Pacemaker digital block ====
+# KERNEL: 60 bpm (1.0 s between beats)
+# KERNEL: 43 bpm (1.4 s between beats)
+# KERNEL: 30 bpm (2.0 s between beats)
+# KERNEL:   PACE at t =   10.739 s  (30 bpm)
+# KERNEL:   PACE at t =   12.739 s  (30 bpm)
+# KERNEL:   PACE at t =   14.739 s  (30 bpm)
+# KERNEL: heart stopped (6 s)
+# KERNEL:   PACE at t =   16.245 s  (heart stopped)
+# KERNEL:   PACE at t =   17.751 s  (heart stopped)
+# KERNEL:   PACE at t =   19.257 s  (heart stopped)
+# KERNEL:   PACE at t =   20.763 s  (heart stopped)
+# KERNEL: recovered, 60 bpm
+# KERNEL: ==== done at t = 25.205 s ====
+# RUNTIME: Info: RUNTIME_0068 tb_pacemaker_digital.v (100): $finish called.
+# KERNEL: Time: 25205078125 ns,  Iteration: 1,  Instance: /tb_pacemaker_digital,  Process: @INITIAL#73_6@.
+# KERNEL: stopped at time: 25205078125 ns
+# VSIM: Simulation has finished. There are no more test vectors to simulate.
+run
+run
+restart
+# ELBREAD: Elaboration process.
+# ELBREAD: Elaboration time 0.0 [s].
+# 
+# KERNEL: Main thread initiated.
+# KERNEL: Kernel process initialization phase.
+# ELAB2: Elaboration final pass...
+# ELAB2: Create instances ...
+# KERNEL: Time resolution set to 1ps.
+# ELAB2: Create instances complete.
+# SLP: Started
+# SLP: Finished. Using existing simulator library
+# SLP: 83 (92.22%) primitives and 7 (7.78%) other processes in SLP
+# SLP: 157 (100.00%) signals in SLP and 0 interface signals
+# ELAB2: Elaboration final pass complete - time: 0.0 [s].
+# KERNEL: SLP loading done - time: 0.0 [s].
+# KERNEL: Warning: You are using the Active-HDL Student Edition. The performance of simulation is running at a reduced rate.
+# KERNEL: Warning: Contact Aldec for available upgrade options - sales@aldec.com.
+# KERNEL: SLP simulation initialization done - time: 0.0 [s].
+# KERNEL: Kernel process initialization done.
+# Allocation: Simulator allocated 4616 kB (elbread=428 elab2=4116 kernel=71 sdf=0)
+# KERNEL: ASDB file was created in location C:\Pacemaker-project\Digital_control_block\digital_control_block\src\wave.asdb
+#  6:30 PM, 19 November, 2026
+#  Simulation has been initialized
+# Waveform file 'untitled.awc' connected to 'C:/Pacemaker-project/Digital_control_block/digital_control_block/src/wave.asdb'.
+run @22s
+# KERNEL: ==== Pacemaker digital block ====
+# KERNEL: 60 bpm (1.0 s between beats)
+# KERNEL: 43 bpm (1.4 s between beats)
+# KERNEL: 30 bpm (2.0 s between beats)
+# KERNEL:   PACE at t =   10.739 s  (30 bpm)
+# KERNEL:   PACE at t =   12.739 s  (30 bpm)
+# KERNEL:   PACE at t =   14.739 s  (30 bpm)
+# KERNEL: heart stopped (6 s)
+# KERNEL:   PACE at t =   16.245 s  (heart stopped)
+# KERNEL:   PACE at t =   17.751 s  (heart stopped)
+# KERNEL:   PACE at t =   19.257 s  (heart stopped)
+# KERNEL:   PACE at t =   20.763 s  (heart stopped)
+# KERNEL: recovered, 60 bpm
+# KERNEL: stopped at time: 22 sec
+# Waveform file 'C:/Pacemaker-project/Digital_control_block/digital_control_block/src/Long_sim.awc' connected to 'C:/Pacemaker-project/Digital_control_block/digital_control_block/src/Long_sim.asdb'.
+# Adding file C:\Pacemaker-project\Digital_control_block\digital_control_block\src\Long_sim.asdb ... Done
+# Adding file C:\Pacemaker-project\Digital_control_block\digital_control_block\src\Long_sim.awc ... Done
+# Adding file C:\Pacemaker-project\Digital_control_block\digital_control_block\src\Long_sim.awc ... Done

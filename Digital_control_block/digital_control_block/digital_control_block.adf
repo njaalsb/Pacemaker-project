@@ -19,14 +19,31 @@ FAMILY=
 [Files]
 /pacemaker_fsm.v=-1
 /fsm_next_state.v=-1
-/dff_pc.v=-1
+/dff_c.v=-1
 /tb_pacemaker_fsm.v=-1
+/FSM_no_timer.asdb=-1
+/FSM_no_timer.awc=-1
+/pacemaker_digital.v=-1
+/tb_pacemaker_digital.v=-1
+/pacemaker_timer.v=-1
+/Long_sim.asdb=-1
+/Long_sim.awc=-1
+/pacemaker_fsm.v=-1
+/tb_pacemaker_digital.v=-1
 [Files.Data]
-.\src\state_machine.v=Verilog Source Code
 .\src\pacemaker_fsm.v=Verilog Source Code
 .\src\fsm_next_state.v=Verilog Source Code
-.\src\dff_pc.v=Verilog Source Code
+.\src\dff_c.v=Verilog Source Code
 .\src\tb_pacemaker_fsm.v=Verilog Source Code
+.\src\FSM_no_timer.asdb=Accelerated Waveform File
+.\src\FSM_no_timer.awc=Accelerated Waveform Configuration
+.\src\pacemaker_digital.v=Verilog Source Code
+.\src\tb_pacemaker_digital.v=Verilog Source Code
+.\src\pacemaker_timer.v=Verilog Source Code
+.\src\Long_sim.asdb=Accelerated Waveform File
+.\src\Long_sim.awc=Accelerated Waveform Configuration
+.\src\pacemaker_fsm.v=Verilog Source Code
+.\src\tb_pacemaker_digital.v=Verilog Source Code
 [HierarchyViewer]
 HierarchyInformation=
 ShowHide=ShowTopLevel

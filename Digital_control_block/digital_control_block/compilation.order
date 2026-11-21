@@ -1,4 +1,7 @@
 .\src\pacemaker_fsm.v
 .\src\fsm_next_state.v
-.\src\dff_pc.v
+.\src\dff_c.v
 .\src\tb_pacemaker_fsm.v
+.\src\pacemaker_digital.v
+.\src\tb_pacemaker_digital.v
+.\src\pacemaker_timer.v

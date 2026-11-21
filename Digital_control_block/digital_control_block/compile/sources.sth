@@ -1,6 +1,8 @@
 [Files List]
 C:/Aldec/Active-HDL-Student-Edition/vlib/std/src/standard.vhd=S
-C:/Pacemaker-project/Digital_control_block/digital_control_block/src/dff_pc.v=S
+C:/Pacemaker-project/Digital_control_block/digital_control_block/src/dff_c.v=S
 C:/Pacemaker-project/Digital_control_block/digital_control_block/src/fsm_next_state.v=S
+C:/Pacemaker-project/Digital_control_block/digital_control_block/src/pacemaker_timer.v=S
 C:/Pacemaker-project/Digital_control_block/digital_control_block/src/pacemaker_fsm.v=S
-C:/Pacemaker-project/Digital_control_block/digital_control_block/src/tb_pacemaker_fsm.v=S
+C:/Pacemaker-project/Digital_control_block/digital_control_block/src/pacemaker_digital.v=S
+C:/Pacemaker-project/Digital_control_block/digital_control_block/src/tb_pacemaker_digital.v=S

@@ -1,16 +1,18 @@
-Active-HDL 17.0.292.10043 2026-11-18 15:50:00
+Active-HDL 17.0.292.10043 2026-11-19 18:30:27
 
 Elaboration top modules:
-Verilog Module                tb_pacemaker_fsm
+Verilog Module                tb_pacemaker_digital
 
 
 ----------------------------------------------------------------------------------------------------------
 Verilog Module          | Library               | Info | Compiler Version           | Compilation Options
 ----------------------------------------------------------------------------------------------------------
-tb_pacemaker_fsm        | digital_control_block |      | 17.0.292.10043 (Windows64) | -O2 -sv2k23
+tb_pacemaker_digital    | digital_control_block |      | 17.0.292.10043 (Windows64) | -O2 -sv2k23
+pacemaker_digital       | digital_control_block |      | 17.0.292.10043 (Windows64) | -O2 -sv2k23
 pacemaker_fsm           | digital_control_block |      | 17.0.292.10043 (Windows64) | -O2 -sv2k23
+pacemaker_timer         | digital_control_block |      | 17.0.292.10043 (Windows64) | -O2 -sv2k23
 fsm_next_state          | digital_control_block |      | 17.0.292.10043 (Windows64) | -O2 -sv2k23
-dff_pc                  | digital_control_block |      | 17.0.292.10043 (Windows64) | -O2 -sv2k23
+dff_c                   | digital_control_block |      | 17.0.292.10043 (Windows64) | -O2 -sv2k23
 ----------------------------------------------------------------------------------------------------------
 
 ----------------------------------------------------------------------------------------------------------

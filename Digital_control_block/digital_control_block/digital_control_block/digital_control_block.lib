@@ -1,22 +1,36 @@
-timestamp=1795013400470
+timestamp=1795107901492
 
 [~A]
+C:/Pacemaker-project/Digital_control_block/digital_control_block/src/dff_c.v=0*18622*19186
+C:/Pacemaker-project/Digital_control_block/digital_control_block/src/dff_pc.v_pacemaker_fsm.v=0*16793*17630
+C:/Pacemaker-project/Digital_control_block/digital_control_block/src/fsm_next_state.v=0*20174*20779
+C:/Pacemaker-project/Digital_control_block/digital_control_block/src/pacemaker_digital.v=0*25358*25918
+C:/Pacemaker-project/Digital_control_block/digital_control_block/src/pacemaker_fsm.v=0*21819*22471
+C:/Pacemaker-project/Digital_control_block/digital_control_block/src/pacemaker_timer.v=0*23501*24299
 C:/Pacemaker-project/Digital_control_block/digital_control_block/src/state_machine.v_pacemaker_fsm.v_fsm_next_state.v_dff_pc.v_tb_pacemaker_fsm.v=0*1499*5717
-C:/Pacemaker-project/Digital_control_block/digital_control_block/src/tb_pacemaker_fsm.v=0*7149*10685
-LastVerilogToplevel=tb_pacemaker_fsm
-ModifyID=2
+C:/Pacemaker-project/Digital_control_block/digital_control_block/src/tb_pacemaker_digital.v=0*34419*35655
+C:/Pacemaker-project/Digital_control_block/digital_control_block/src/tb_pacemaker_fsm.v=0*29700*33236
+LastVerilogToplevel=tb_pacemaker_digital
+ModifyID=12
 Version=74
 
 [~MFT]
-0=4|0digital_control_block.mgf|10685|0
-1=4|1digital_control_block.mgf|14841|8518
-3=8|3digital_control_block.mgf|24620|15470
+0=6|0digital_control_block.mgf|35655|10016
+1=4|1digital_control_block.mgf|60245|39675
+3=8|3digital_control_block.mgf|74743|54209
 
 [$root]
-A/$root=22|||1*14467
-BinW64/$root=3*16221
-SLP=3*16336
-Version=17.0.292.10043 (Windows64)|0000000b789cd3f53752d02d2e33ca3632060010ad02e7|c73a565f2ade592f8ac1c68f484c9216fe34b47234041dc595c6d7dee4597604
+A/$root=22|||1*59855
+BinW64/$root=3*71453
+SLP=3*71568
+Version=17.0.292.10043 (Windows64)|0000000b789cd3f53752d02d2e33ca3632060010ad02e7|c73a565f2ade592f8ac1c68f484c9216ea4f9e5ad5350ec76a92e8f36d94181e
+
+[dff_c]
+A/dff_c=22|../src/dff_c.v|10|1*35829
+BinW64/dff_c=3*48198
+R=../src/dff_c.v|10
+SLP=3*48313
+Version=17.0.292.10043 (Windows64)|0000000b789cd3f53752d02d2e33ca3632060010ad02e7|caf37cd98594969544220e0f7d7c81a2ff0cece18aed4447c7410862e65c09d1
 
 [dff_pc]
 A/dff_pc=22|../src/dff_pc.v|13|1*4314
@@ -26,30 +40,55 @@ SLP=3*833
 Version=17.0.292.10043 (Windows64)|0000000b789cd3f53752d02d2e33ca3632060010ad02e7|5f8be0407e763c11c952c6c713d970093aeb726bb612d9ea0c2b7ccedfbfe7c8
 
 [fsm_next_state]
-A/fsm_next_state=22|../src/fsm_next_state.v|12|1*2202
-BinW64/fsm_next_state=3*455
+A/fsm_next_state=22|../src/fsm_next_state.v|12|1*38108
+BinW64/fsm_next_state=3*48624
 R=../src/fsm_next_state.v|12
-SLP=3*579
-Version=17.0.292.10043 (Windows64)|0000000b789cd3f53752d02d2e33ca3632060010ad02e7|3f34aa4f26b63e4eec8510ec273ba634f477dcf211db3703af915356606ba8aa787ce448073d29b7b396708f4d7f2b5b
+SLP=3*48748
+Version=17.0.292.10043 (Windows64)|0000000b789cd3f53752d02d2e33ca3632060010ad02e7|3f34aa4f26b63e4eec8510ec273ba634f477dcf211db3703af915356606ba8aa8db92de99860a11820830d4f5db51458
+
+[pacemaker_digital]
+A/pacemaker_digital=22|../src/pacemaker_digital.v|11|1*46102
+BinW64/pacemaker_digital=3*50396
+R=../src/pacemaker_digital.v|11
+SLP=3*50523
+Version=17.0.292.10043 (Windows64)|0000000b789cd3f53752d02d2e33ca3632060010ad02e7|6d2582cccff1818ea814530fec85eeb14c6aadf6d718c88b53dc5a7a732790ca6f12ad28f6cd5c731abeef0b0939d036
 
 [pacemaker_fsm]
-A/pacemaker_fsm=22|../src/pacemaker_fsm.v|16|1*374
-BinW64/pacemaker_fsm=3*199
+A/pacemaker_fsm=22|../src/pacemaker_fsm.v|16|1*40594
+BinW64/pacemaker_fsm=3*49085
 R=../src/pacemaker_fsm.v|16
-SLP=3*322
-Version=17.0.292.10043 (Windows64)|0000000b789cd3f53752d02d2e33ca3632060010ad02e7|5ab7910731cbca2cc28acc0da9a21e8ee21ed807181826221e8713334a86e4182856656062a0d5fff846fcbbf3bb3e2d
+SLP=3*49208
+Version=17.0.292.10043 (Windows64)|0000000b789cd3f53752d02d2e33ca3632060010ad02e7|5ab7910731cbca2cc28acc0da9a21e8ee21ed807181826221e8713334a86e4182d6c0dbd5c86d378b4c481180f1cab06
+
+[pacemaker_timer]
+A/pacemaker_timer=22|../src/pacemaker_timer.v|17|1*42655
+BinW64/pacemaker_timer=3*49540
+R=../src/pacemaker_timer.v|17
+SLP=3*49665
+Version=17.0.292.10043 (Windows64)|0000000b789cd3f53752d02d2e33ca3632060010ad02e7|3d5503bbd9232094f87a6e5f1b82ab198a3b1126bed1206de25605eb392e1f239aee9493292f6fb0ca798356e549dc4b
+
+[tb_pacemaker_digital]
+A/tb_pacemaker_digital=22|../src/tb_pacemaker_digital.v|19|1*60245
+BinW64/tb_pacemaker_digital=3*71652
+R=../src/tb_pacemaker_digital.v|19
+SLP=3*74743
+Version=17.0.292.10043 (Windows64)|0000000b789cd3f53752d02d2e33ca3632060010ad02e7|9709170f289b8e069324bcfcc7dcf121df723e801ab4c0a832623a31aaf802bdcb95443f9b044e0c73e69471568674e3
 
 [tb_pacemaker_fsm]
-A/tb_pacemaker_fsm=22|../src/tb_pacemaker_fsm.v|19|1*14841
-BinW64/tb_pacemaker_fsm=3*16420
+A/tb_pacemaker_fsm=22|../src/tb_pacemaker_fsm.v|19|1*51711
+BinW64/tb_pacemaker_fsm=3*56104
 R=../src/tb_pacemaker_fsm.v|19
-SLP=3*24620
-Version=17.0.292.10043 (Windows64)|0000000b789cd3f53752d02d2e33ca3632060010ad02e7|9709170f289b8e069324bcfcc7dcf1212959d305a70f918ecc8bdba0e52ca3ebfb3b6c91d7ddee05fd9b639483c5faa2
+SLP=3*64304
+Version=17.0.292.10043 (Windows64)|0000000b789cd3f53752d02d2e33ca3632060010ad02e7|9709170f289b8e069324bcfcc7dcf1212959d305a70f918ecc8bdba0e52ca3ebb3dbf1d7cf481e40b922842160f09add
 
 [~U]
-$root=12|0*6391|
+$root=12|0*33804|
+dff_c=12|0*18418|
 dff_pc=12|0*709|
-fsm_next_state=12|0*476|
-pacemaker_fsm=12|0*214|
-tb_pacemaker_fsm=12|0*6589||0x10
+fsm_next_state=12|0*19941|
+pacemaker_digital=12|0*25112||0x10
+pacemaker_fsm=12|0*21559|
+pacemaker_timer=12|0*23250||0x10
+tb_pacemaker_digital=12|0*34050||0x10
+tb_pacemaker_fsm=12|0*29140||0x10
                                                                         

@@ -1,20 +1,13 @@
-//-----------------------------------------------------------------------------
-// fsm_next_state : combinational next-state logic for the pacemaker FSM.
-//
-//   DA = A'·B'·H'·T
-//   DB = A·B' + A'·H
-//
-// Gate for gate the same as Figure 4 in the report. The state bits are
-// taken from the flip-flops' Q and Q' outputs, so only H needs an inverter.
-//-----------------------------------------------------------------------------
+// fsm_next_state : next-state logic for the pacemaker FSM
+
 `timescale 1ns/1ps
 
 module fsm_next_state (
-    input  wire A,     // state MSB      (Q  of flip-flop A)
-    input  wire A_n,   // inverted MSB   (Q' of flip-flop A)
-    input  wire B_n,   // inverted LSB   (Q' of flip-flop B)
-    input  wire H,     // heartbeat sensed
-    input  wire T,     // timer exceeded 1.5 s
+    input  wire A,     
+    input  wire A_n,    
+    input  wire B_n,    
+    input  wire H,      
+    input  wire T,      
     output wire DA,
     output wire DB
 );

@@ -2,3 +2,6 @@ i<>.\src\pacemaker_fsm.v
 i<>.\src\fsm_next_state.v
 i<>.\src\dff_pc.v
 i<>.\src\tb_pacemaker_fsm.v
+i<>.\src\pacemaker_digital.v
+i<>.\src\tb_pacemaker_digital.v
+i<>.\src\pacemaker_timer.v
